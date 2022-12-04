@@ -21,12 +21,13 @@ public class Order {
 
     /**
      * 传入dateTime的特殊处理setter
-     * @param dateTime 字符串形式的详细日期时间
+     * @param inputDateTime 字符串形式的详细日期时间
      */
-    public void setDateTime(String dateTime) {
+    public void setDateTime(String inputDateTime) {
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         try {
-            this.dateTime = f.parse(dateTime);
+//            字符串转日期
+            this.dateTime = f.parse(inputDateTime);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -36,6 +37,7 @@ public class Order {
      * @return 日期时间 字符串形式
      */
     public String getDateTimeStr() {
-        return new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(this.dateTime);
+//        日期转字符串
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(this.dateTime);
     }
 }
