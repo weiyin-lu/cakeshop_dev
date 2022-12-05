@@ -20,14 +20,27 @@
             <result column="type_id" property="recommendType"/>
             <result column="goods_id" property="recommendGoodsId"/>
         </collection>
-
     </resultMap>
-<!--    查询所有id值为预设值的商品-->
-    <select id="selectAllByTypeId" resultMap="GoodsMap">
-        select g.id, g.name, cover, image1, image2, price, intro, stock from recommend r
+
+<!--    按照name字段检索goods表-->
+    <select id="selectByGoodsName" resultMap="GoodsMap">
+        select * from goods where name like concat('%',#{goodsName},'%');
+    </select>
+<!--    在goods表中查询所有记录-->
+    <select id="selectAllGoods" resultMap="GoodsMap">
+        select * from goods;
+    </select>
+<!--    查询所有type.id值为预设值的商品，返回goods表和recommend表全部字段-->
+    <select id="selectByTypeId" resultMap="GoodsMap">
+        select g.id, g.name, cover, image1, image2, price, intro, stock, r.type_id, r.goods_id from recommend r
             join goods g on g.id = r.goods_id
             join type t on t.id = r.type_id
             where t.id = #{id};
     </select>
-
+    <select id="selectTypeNameByGoodsName" resultType="java.lang.String">
+        select t.name from recommend
+            join goods g on g.id = recommend.goods_id
+            join type t on t.id = recommend.type_id
+            where g.name = #{goodsName};
+    </select>
 </mapper>
