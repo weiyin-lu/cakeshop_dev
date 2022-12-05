@@ -37,6 +37,7 @@
             join type t on t.id = r.type_id
             where t.id = #{id};
     </select>
+<!--    查询goods表中匹配名字的type表name字段（严格匹配）-->
     <select id="selectTypeNameByGoodsName" resultType="java.lang.String">
         select t.name from recommend
             join goods g on g.id = recommend.goods_id
