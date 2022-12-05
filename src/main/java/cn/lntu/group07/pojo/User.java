@@ -4,13 +4,13 @@ import lombok.Data;
 
 @Data
 public class User {
-    private Integer id;
-    private String username;
-    private String email;
-    private String password;
-    private String name;
-    private String phone;
-    private String address;
-    private Boolean isAdmin;
-    private String isValidate;
+    private Integer userId;
+    private String userUserName;
+    private String userEmail;
+    private String userPassword;
+    private String userName;
+    private String userPhone;
+    private String userAddress;
+    private Boolean userIsAdmin;
+    private String userIsValidate;
 }
