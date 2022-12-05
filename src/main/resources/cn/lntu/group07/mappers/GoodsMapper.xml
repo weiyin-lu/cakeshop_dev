@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace属性是名称空间，必须唯一 -->
+<mapper namespace="cn.lntu.group07.mappers.GoodsMapper">
+
+    <resultMap type="cn.lntu.group07.pojo.Goods" id="GoodsMap">
+        <id column="id" property="goodsId"/>
+        <result column="name" property="goodsName"/>
+        <result column="cover" property="goodsCover"/>
+        <result column="image1" property="goodsImage1"/>
+        <result column="image2" property="goodsImage2"/>
+        <result column="price" property="goodsPrice"/>
+        <result column="intro" property="goodsIntro"/>
+        <result column="stock" property="goodsStock"/>
+        <collection property="recommend" javaType="cn.lntu.group07.pojo.Recommend">
+            <id column="id" property="recommendId"/>
+            <result column="type_id" property="recommendType"/>
+            <result column="goods_id" property="recommendGoodsId"/>
+        </collection>
+
+    </resultMap>
+<!--    查询所有id值为预设值的商品-->
+    <select id="selectAllByTypeId" resultMap="GoodsMap">
+        select g.id, g.name, cover, image1, image2, price, intro, stock from recommend r
+            join goods g on g.id = r.goods_id
+            join type t on t.id = r.type_id
+            where t.id = #{id};
+    </select>
+
+</mapper>

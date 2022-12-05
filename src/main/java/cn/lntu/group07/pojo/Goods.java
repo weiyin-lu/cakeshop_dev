@@ -2,15 +2,18 @@ package cn.lntu.group07.pojo;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class Goods {
-    private Integer id;
-    private String name;
-    private String cover;
-    private String image1;
-    private String image2;
-    private Double price;
-    private String intro;
-    private Integer stock;
-    private Type typeId;
+    private Integer goodsId;
+    private String goodsName;
+    private String goodsCover;
+    private String goodsImage1;
+    private String goodsImage2;
+    private Double goodsPrice;
+    private String goodsIntro;
+    private Integer goodsStock;
+    private Integer goodsTypeId;
+    private List<Recommend> recommend;
 }
