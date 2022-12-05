@@ -15,7 +15,7 @@
         <result column="price" property="goodsPrice"/>
         <result column="intro" property="goodsIntro"/>
         <result column="stock" property="goodsStock"/>
-        <collection property="recommend" javaType="cn.lntu.group07.pojo.Recommend">
+        <collection property="recommend" ofType="cn.lntu.group07.pojo.Recommend">
             <id column="id" property="recommendId"/>
             <result column="type_id" property="recommendType"/>
             <result column="goods_id" property="recommendGoodsId"/>
